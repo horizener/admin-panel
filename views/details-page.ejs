@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+</head>
+<body>
+    <div>
+        <!-- <% users.forEach(function(user){ %>
+            
+            <p><%=user.name %></p>
+            <p><%=user.status %></p>
+            <p><%=user.PAN %></p>
+            <p><%=user.email %></p>
+            
+            <%if (role === 'super') { %>
+                
+                <form action="/verify" method="post">
+                    
+                    
+                    <button id="btn" type="submit" value="<%=user %>">verify</button>
+                </form>
+                
+                
+
+                <% } %>
+
+            <%});
+        %> -->
+        <% for(var i=0; i < users.length; i++) { %>
+           
+            <p><%= users[i].name %></p>
+            <p><%= users[i].email %></p>
+            <p><%= users[i].status %></p>
+            
+            
+                
+                <form action="/verify" method="post">
+                    <input type="text" name="PAN" value="<%=users[i].PAN %>" readonly>
+                    <%if (role === 'super') { %>
+                        <button id="btn" type="submit">verify</button>
+                    <% } %>
+                </form>
+                
+            
+
+            
+        <% } %>
+
+         
+    </div>
+    <script>
+        function show(){
+            $( "#btn" ).load( "/verify" );
+        }   
+
+        // const btn = document.getElementById('verify')
+        // btn.addEventListener('click', function() {
+        //     console.log('clicked')
+        // })
+    </script>
+    <!-- <script src="client.js"></script> -->
+
+    
+    <!-- <div><%=users%></div> -->
+    <!-- <%
+    clicked = function() {
+    console.log('clicked on btn')
+    }
+    %> -->
+</body>
+</html>
